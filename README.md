@@ -19,7 +19,13 @@
 | PB14 | USART1_TX |      |
 | PB15 | USART1_RX |      |
 
+CPOL 时钟极性： 低电平有效
 
+CPHA 时钟相位： 第一个边沿采样数据
+
+[SPI时序参考地址](https://blog.csdn.net/weixin_42892101/article/details/90094710)
+
+![img](README.image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mjg5MjEwMQ==,size_16,color_FFFFFF,t_70.png)
 
 ## 注意点
 

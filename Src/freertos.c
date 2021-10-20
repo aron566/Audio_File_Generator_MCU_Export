@@ -158,6 +158,7 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
     User_Main_Loop();
+    
     osDelay(1);
   }
   /* USER CODE END StartDefaultTask */
@@ -174,16 +175,16 @@ void StartAudio_Task(void *argument)
 {
   /* USER CODE BEGIN StartAudio_Task */
   /*定时自动时序条件*/
-  static uint32_t Time_ms = 0;  
+//  static uint32_t Time_ms = 0;
   /* Infinite loop */
   for(;;)
   {
-    uint32_t Current_Time_ms = Timer_Port_Get_Current_Time(TIMER_MS);
-    if((Current_Time_ms - Time_ms) >= (uint32_t)ONE_FRAME_TIME_MS)
-    {
-      osEventFlagsSet(Audio_Rec_EventHandle, AUDIO_SEND_OK_EVENT);
-      Time_ms = Current_Time_ms;
-    }   
+//    uint32_t Current_Time_ms = Timer_Port_Get_Current_Time(TIMER_MS);
+//    if((Current_Time_ms - Time_ms) >= (uint32_t)ONE_FRAME_TIME_MS)
+//    {
+//      osEventFlagsSet(Audio_Rec_EventHandle, 1);
+//      Time_ms = Current_Time_ms;
+//    }
     Audio_Debug_Start();
     osDelay(1);
   }

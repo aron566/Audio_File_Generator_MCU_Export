@@ -2,7 +2,7 @@
 <project>
   <fileVersion>3</fileVersion>
   <configuration>
-    <name>Audio_SPI_Export_Tool</name>
+    <name>Audio_Export_Tool</name>
     <toolchain>
       <name>ARM</name>
     </toolchain>
@@ -16,15 +16,15 @@
         <debug>1</debug>
         <option>
           <name>ExePath</name>
-          <state>Audio_SPI_Export_Tool/Exe</state>
+          <state>Audio_Export_Tool/Exe</state>
         </option>
         <option>
           <name>ObjPath</name>
-          <state>Audio_SPI_Export_Tool/Obj</state>
+          <state>Audio_Export_Tool/Obj</state>
         </option>
         <option>
           <name>ListPath</name>
-          <state>Audio_SPI_Export_Tool/List</state>
+          <state>Audio_Export_Tool/List</state>
         </option>
         <option>
           <name>GEndianMode</name>
@@ -662,7 +662,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>Audio_SPI_Export_Tool.hex</state>
+          <state>Audio_Export_Tool.hex</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -705,7 +705,7 @@
         <debug>1</debug>
         <option>
           <name>IlinkOutputFile</name>
-          <state>Audio_SPI_Export_Tool.out</state>
+          <state>Audio_Export_Tool.out</state>
         </option>
         <option>
           <name>IlinkLibIOConfig</name>
@@ -1014,7 +1014,7 @@
         </option>
         <option>
           <name>IlinkTrustzoneImportLibraryOut</name>
-          <state>Audio_SPI_Export_Tool_import_lib.o</state>
+          <state>Audio_Export_Tool_import_lib.o</state>
         </option>
         <option>
           <name>OILinkExtraOption</name>

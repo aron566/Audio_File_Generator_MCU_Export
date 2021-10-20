@@ -7,8 +7,8 @@ HeaderPath=..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\I
 CDefines=USE_HAL_DRIVER;STM32H743xx;USE_HAL_DRIVER;USE_HAL_DRIVER;
 
 [PreviousGenFiles]
-HeaderPath=F:/TEST_WorkSpace/Audio_SPI_Export_Tool/Inc
+HeaderPath=F:/TEST_WorkSpace/Audio_Export_Tool/Inc
 HeaderFiles=gpio.h;FreeRTOSConfig.h;dma.h;spi.h;tim.h;usart.h;usb_device.h;usbd_conf.h;usbd_desc.h;usbd_audio_if.h;stm32h7xx_it.h;stm32h7xx_hal_conf.h;main.h;
-SourcePath=F:/TEST_WorkSpace/Audio_SPI_Export_Tool/Src
+SourcePath=F:/TEST_WorkSpace/Audio_Export_Tool/Src
 SourceFiles=gpio.c;freertos.c;dma.c;spi.c;tim.c;usart.c;usb_device.c;usbd_conf.c;usbd_desc.c;usbd_audio_if.c;stm32h7xx_it.c;stm32h7xx_hal_msp.c;stm32h7xx_hal_timebase_tim.c;main.c;
 

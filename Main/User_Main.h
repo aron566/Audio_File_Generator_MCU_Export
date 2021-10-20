@@ -35,7 +35,8 @@ extern "C" {
 
 /** Exported constants -------------------------------------------------------*/
 /** Exported macros-----------------------------------------------------------*/
-#define AUDIO_SEND_OK_EVENT (1U << 0)
+/* AUDIO EVENT */
+#define AUDIO_RECEIVED_OK_EVENT (1U << 0)
   
 #ifndef SECTION
   #ifdef __CC_ARM                        /* ARM Compiler */
@@ -53,7 +54,8 @@ extern "C" {
   #else
       #error not supported tool chain
   #endif /* __CC_ARM */
-#endif  
+#endif
+  
 /** Exported variables -------------------------------------------------------*/
 /** Exported functions prototypes --------------------------------------------*/
 

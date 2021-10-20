@@ -2,7 +2,7 @@
 <project>
     <fileVersion>3</fileVersion>
     <configuration>
-        <name>Audio_SPI_Export_Tool</name>
+        <name>Audio_Export_Tool</name>
         <toolchain>
             <name>ARM</name>
         </toolchain>

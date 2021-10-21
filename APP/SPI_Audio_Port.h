@@ -31,6 +31,7 @@ extern "C" {
 /** Exported constants -------------------------------------------------------*/
 /** Exported macros-----------------------------------------------------------*/
 #define AUDIO_SAMPLE_RATE                     16000U  
+#define AUDIO_CHANNEL_NUM                     2U  /**< 音频通道数量2 */
 #define MONO_FRAME_SIZE                       64
 #define STEREO_FRAME_SIZE                     (MONO_FRAME_SIZE*2U)  
 #define ONE_FRAME_TIME_MS                     (MONO_FRAME_SIZE/(AUDIO_SAMPLE_RATE/1000U))  

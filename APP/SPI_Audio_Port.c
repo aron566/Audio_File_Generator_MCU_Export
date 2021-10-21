@@ -35,13 +35,13 @@ extern "C" {
 extern SPI_HandleTypeDef hspi1;
 /** Private variables --------------------------------------------------------*/
 /*音频缓冲区*/
-static int16_t Audio_Data_Rec_Buf[STEREO_FRAME_SIZE] SECTION(".USE_DMA_BUF_SPACE");
+static int16_t Audio_Data_Rec_Buf[AUDIO_CHANNEL_NUM * STEREO_FRAME_SIZE] SECTION(".USE_DMA_BUF_SPACE");
 /*测试音频缓冲区*/
 static int16_t Sin_Wave_PCM_Buf[SIN_WAVE_MAX_POINTS];
 /*音频发送区*/
 static int16_t Audio_Data_Send_Buf[STEREO_FRAME_SIZE];
 /*音频调试缓冲区*/
-static int16_t Debug_Auido_Buf[STEREO_FRAME_SIZE];
+static int16_t Debug_Auido_Buf[AUDIO_CHANNEL_NUM * STEREO_FRAME_SIZE];
 /*音频事件标志位*/
 static volatile int16_t *Current_Opt_Rec_Buf_Sel = Audio_Data_Rec_Buf;
 extern osEventFlagsId_t Audio_Rec_EventHandle;
@@ -179,7 +179,7 @@ void HAL_SPI_RxHalfCpltCallback(SPI_HandleTypeDef *hspi)
 void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef *hspi)
 {
   (void)(hspi);
-  Current_Opt_Rec_Buf_Sel = &Audio_Data_Rec_Buf[MONO_FRAME_SIZE];
+  Current_Opt_Rec_Buf_Sel = &Audio_Data_Rec_Buf[AUDIO_CHANNEL_NUM * MONO_FRAME_SIZE];
   osEventFlagsSet(Audio_Rec_EventHandle, AUDIO_RECEIVED_OK_EVENT);
 }
 
@@ -202,8 +202,22 @@ void SPI_Audio_Port_Start(void)
   //Test_Audio_Port_Put_Data();
   //Audio_Debug_Put_Data(Audio_Data_Send_Buf, &Audio_Data_Send_Buf[MONO_FRAME_SIZE], 0);
 
-  /*获取SPI主机数据*/
+  /* 获取SPI主机数据 */
+  
+  /* 分离左右通道数据 */
+#if (AUDIO_CHANNEL_NUM != 1)
+  int16_t Left_Audio[MONO_FRAME_SIZE], Right_Audio[MONO_FRAME_SIZE];
+  int index = 0;
+  for(int i = 0; i < MONO_FRAME_SIZE; i++)
+  {
+    Left_Audio[i] = Current_Opt_Rec_Buf_Sel[index++];
+    Right_Audio[i] = Current_Opt_Rec_Buf_Sel[index++];
+  }  
+  Audio_Debug_Put_Data((const int16_t *)Left_Audio, (const int16_t *)Right_Audio, 0);
+#else
+  /* 单通道数据 */
   Audio_Debug_Put_Data((const int16_t *)Current_Opt_Rec_Buf_Sel, (const int16_t *)Current_Opt_Rec_Buf_Sel, 0);
+#endif  
 }
 
 /**
@@ -225,7 +239,7 @@ void SPI_Audio_Port_Init(void)
   Audio_Debug_Init((uint16_t *)Debug_Auido_Buf, Send_Data_Func_Port, Get_Idel_State_Port);
   
   /*启动接收*/
-  HAL_SPI_Receive_DMA(&hspi1, (uint8_t *)Audio_Data_Rec_Buf, STEREO_FRAME_SIZE*sizeof(int16_t));
+  HAL_SPI_Receive_DMA(&hspi1, (uint8_t *)Audio_Data_Rec_Buf, AUDIO_CHANNEL_NUM * STEREO_FRAME_SIZE*sizeof(int16_t));
 }
 
 #ifdef __cplusplus ///<end extern c
